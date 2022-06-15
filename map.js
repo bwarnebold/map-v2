@@ -31,31 +31,33 @@ var centerY = parseFloat(viewbox[3]) / 2;
 var matrixGroup = svg.getElementById("matrix-group");
 var isZoomed = false;
 var isPanned = false;
+var buttonWrapper = document.querySelector('.refreshDiv');
 
 function zoom(scale) {
-  if (isZoomed === false) {
-    for (var i = 0; i < 4; i++) {
-      transformMatrix[i] *= scale;
+    if (isZoomed === false) {
+      for (var i = 0; i < 4; i++) {
+        transformMatrix[i] *= scale;
+      }
+      transformMatrix[4] += (1 - scale) * centerX;
+      transformMatrix[5] += (1 - scale) * centerY;
+                  
+      var newMatrix = "matrix(" +  transformMatrix.join(' ') + ")";
+      matrixGroup.setAttributeNS(null, "transform", newMatrix);
+      buttonWrapper.classList.remove('hide');
+      isZoomed = true;
     }
-    transformMatrix[4] += (1 - scale) * centerX;
-    transformMatrix[5] += (1 - scale) * centerY;
-                
-    var newMatrix = "matrix(" +  transformMatrix.join(' ') + ")";
-    matrixGroup.setAttributeNS(null, "transform", newMatrix);
-    isZoomed = true;
   }
-}
 
-function pan(dx, dy) {
-  if (isPanned === false) {
-    transformMatrix[4] += dx;
-    transformMatrix[5] += dy;
+function pan(dx, dy) {   
+    if (isPanned === false) {
+        transformMatrix[4] += dx;
+        transformMatrix[5] += dy;
               
-    var newMatrix = "matrix(" +  transformMatrix.join(' ') + ")";
-    matrixGroup.setAttributeNS(null, "transform", newMatrix);
-    isPanned = true;
+        var newMatrix = "matrix(" +  transformMatrix.join(' ') + ")";
+        matrixGroup.setAttributeNS(null, "transform", newMatrix);
+        isPanned = true;
+    }   
   }
-}
 
 // Zoom + Pan to State End //
 
@@ -400,7 +402,9 @@ function alabamaFunctionMobile() {
   document.getElementById("mobile-body-2").innerHTML = "Body";
   document.getElementById("mobile-heading-3").innerHTML = "Heading";
   document.getElementById("mobile-body-3").innerHTML = "Body";
+  if (isZoomed === false) {
   document.getElementById("ALABAMA").style = 'fill: #4d79ff;';
+  }
 }
 
 function alabamaFunction() {
@@ -418,7 +422,9 @@ function alaskaFunctionMobile() {
   document.getElementById("mobile-body-2").innerHTML = "Body";
   document.getElementById("mobile-heading-3").innerHTML = "Heading";
   document.getElementById("mobile-body-3").innerHTML = "Body";
+  if (isZoomed === false) {
   document.getElementById("ALASKA").style = 'fill: #4d79ff;';
+  }
 }
 
 function alaskaFunction() {
@@ -436,7 +442,9 @@ function arizonaFunctionMobile() {
   document.getElementById("mobile-body-2").innerHTML = "Body";
   document.getElementById("mobile-heading-3").innerHTML = "Heading";
   document.getElementById("mobile-body-3").innerHTML = "Body";
+  if (isZoomed === false) {
   document.getElementById("ARIZONA").style = 'fill: #4d79ff;';
+  }
 }
 
 function arizonaFunction() {
@@ -454,7 +462,9 @@ function arkansasFunctionMobile() {
   document.getElementById("mobile-body-2").innerHTML = "Body";
   document.getElementById("mobile-heading-3").innerHTML = "Heading";
   document.getElementById("mobile-body-3").innerHTML = "Body";
+  if (isZoomed === false) {
   document.getElementById("ARKANSAS").style = 'fill: #4d79ff;';
+  }
 }
 
 function arkansasFunction() {
@@ -472,7 +482,9 @@ function californiaFunctionMobile() {
   document.getElementById("mobile-body-2").innerHTML = "Body";
   document.getElementById("mobile-heading-3").innerHTML = "Heading";
   document.getElementById("mobile-body-3").innerHTML = "Body";
+  if (isZoomed === false) {
   document.getElementById("CALIFORNIA").style = 'fill: #4d79ff;';
+  }
 }
 
 function californiaFunction() {
@@ -499,16 +511,20 @@ function coloradoFunctionMobile() {
     document.getElementById("mobile-body-2").innerHTML = "Body";
     document.getElementById("mobile-heading-3").innerHTML = "Heading";
     document.getElementById("mobile-body-3").innerHTML = "Body";
+    if (isZoomed === false) {
     document.getElementById("COLORADO").style = 'fill: #4d79ff;';
+  }
 }
-
+  
 function connecticutFunctionMobile() {
   document.getElementById("mobile-heading-1").innerHTML = "Connecticut";
   document.getElementById("mobile-heading-2").innerHTML = "Heading";
   document.getElementById("mobile-body-2").innerHTML = "Body";
   document.getElementById("mobile-heading-3").innerHTML = "Heading";
   document.getElementById("mobile-body-3").innerHTML = "Body";
+  if (isZoomed === false) {
   document.getElementById("CONNECTICUT").style = 'fill: #4d79ff;';
+  }
 }
 
 function connecticutFunction() {
@@ -535,7 +551,9 @@ function delawareFunctionMobile() {
     document.getElementById("mobile-body-2").innerHTML = "Body";
     document.getElementById("mobile-heading-3").innerHTML = "Heading";
     document.getElementById("mobile-body-3").innerHTML = "Body";
+    if (isZoomed === false) {
     document.getElementById("DELAWARE").style = 'fill: #4d79ff;';
+  }
 }
 
 function floridaFunctionMobile() {
@@ -544,7 +562,9 @@ function floridaFunctionMobile() {
   document.getElementById("mobile-body-2").innerHTML = "Body";
   document.getElementById("mobile-heading-3").innerHTML = "Heading";
   document.getElementById("mobile-body-3").innerHTML = "Body";
+  if (isZoomed === false) {
   document.getElementById("FLORIDA").style = 'fill: #4d79ff;';
+  }
 }
 
 function floridaFunction() {
@@ -562,7 +582,9 @@ function georgiaFunctionMobile() {
   document.getElementById("mobile-body-2").innerHTML = "Body";
   document.getElementById("mobile-heading-3").innerHTML = "Heading";
   document.getElementById("mobile-body-3").innerHTML = "Body";
+  if (isZoomed === false) {
   document.getElementById("GEORGIA").style = 'fill: #4d79ff;';
+  }
 }
 
 function georgiaFunction() {
@@ -580,7 +602,9 @@ function hawaiiFunctionMobile() {
   document.getElementById("mobile-body-2").innerHTML = "Body";
   document.getElementById("mobile-heading-3").innerHTML = "Heading";
   document.getElementById("mobile-body-3").innerHTML = "Body";
+  if (isZoomed === false) {
   document.getElementById("HAWAII").style = 'fill: #4d79ff;';
+  }
 }
 
 function hawaiiFunction() {
@@ -598,7 +622,9 @@ function idahoFunctionMobile() {
   document.getElementById("mobile-body-2").innerHTML = "Body";
   document.getElementById("mobile-heading-3").innerHTML = "Heading";
   document.getElementById("mobile-body-3").innerHTML = "Body";
+  if (isZoomed === false) {
   document.getElementById("IDAHO").style = 'fill: #4d79ff;';
+  }
 }
 
 function idahoFunction() {
@@ -616,7 +642,9 @@ function illinoisFunctionMobile() {
   document.getElementById("mobile-body-2").innerHTML = "Body";
   document.getElementById("mobile-heading-3").innerHTML = "Heading";
   document.getElementById("mobile-body-3").innerHTML = "Body";
+  if (isZoomed === false) {
   document.getElementById("ILLINOIS").style = 'fill: #4d79ff;';
+  }
 }
 
 function illinoisFunction() {
@@ -634,7 +662,9 @@ function indianaFunctionMobile() {
   document.getElementById("mobile-body-2").innerHTML = "Body";
   document.getElementById("mobile-heading-3").innerHTML = "Heading";
   document.getElementById("mobile-body-3").innerHTML = "Body";
+  if (isZoomed === false) {
   document.getElementById("INDIANA").style = 'fill: #4d79ff;';
+  }
 }
 
 function indianaFunction() {
@@ -652,7 +682,9 @@ function iowaFunctionMobile() {
   document.getElementById("mobile-body-2").innerHTML = "Body";
   document.getElementById("mobile-heading-3").innerHTML = "Heading";
   document.getElementById("mobile-body-3").innerHTML = "Body";
+  if (isZoomed === false) {
   document.getElementById("IOWA").style = 'fill: #4d79ff;';
+  }
 }
 
 function iowaFunction() {
@@ -670,7 +702,9 @@ function kansasFunctionMobile() {
   document.getElementById("mobile-body-2").innerHTML = "Body";
   document.getElementById("mobile-heading-3").innerHTML = "Heading";
   document.getElementById("mobile-body-3").innerHTML = "Body";
+  if (isZoomed === false) {
   document.getElementById("KANSAS").style = 'fill: #4d79ff;';
+  }
 }
 
 function kansasFunction() {
@@ -688,7 +722,9 @@ function kentuckyFunctionMobile() {
   document.getElementById("mobile-body-2").innerHTML = "Body";
   document.getElementById("mobile-heading-3").innerHTML = "Heading";
   document.getElementById("mobile-body-3").innerHTML = "Body";
+  if (isZoomed === false) {
   document.getElementById("KENTUCKY").style = 'fill: #4d79ff;';
+  }
 }
 
 function kentuckyFunction() {
@@ -706,7 +742,9 @@ function louisianaFunctionMobile() {
   document.getElementById("mobile-body-2").innerHTML = "Body";
   document.getElementById("mobile-heading-3").innerHTML = "Heading";
   document.getElementById("mobile-body-3").innerHTML = "Body";
+  if (isZoomed === false) {
   document.getElementById("LOUISIANA").style = 'fill: #4d79ff;';
+  }
 }
 
 function louisianaFunction() {
@@ -733,7 +771,9 @@ function maineFunctionMobile() {
     document.getElementById("mobile-body-2").innerHTML = "Body";
     document.getElementById("mobile-heading-3").innerHTML = "Heading";
     document.getElementById("mobile-body-3").innerHTML = "Body";
+    if (isZoomed === false) {
     document.getElementById("MAINE").style = 'fill: #4d79ff;';
+  }
 }
 
 function marylandFunctionMobile() {
@@ -742,7 +782,9 @@ function marylandFunctionMobile() {
   document.getElementById("mobile-body-2").innerHTML = "Body";
   document.getElementById("mobile-heading-3").innerHTML = "Heading";
   document.getElementById("mobile-body-3").innerHTML = "Body";
+  if (isZoomed === false) {
   document.getElementById("MARYLAND").style = 'fill: #4d79ff;';
+  }
 }
 
 function marylandFunction() {
@@ -769,7 +811,9 @@ function massachusettsFunctionMobile() {
     document.getElementById("mobile-body-2").innerHTML = "Body";
     document.getElementById("mobile-heading-3").innerHTML = "Heading";
     document.getElementById("mobile-body-3").innerHTML = "Body";
+    if (isZoomed === false) {
     document.getElementById("MASSACHUSETTS").style = 'fill: #4d79ff;';
+  }
 }
 
 function michiganFunction() {
@@ -787,7 +831,9 @@ function michiganFunctionMobile() {
     document.getElementById("mobile-body-2").innerHTML = "Body";
     document.getElementById("mobile-heading-3").innerHTML = "Heading";
     document.getElementById("mobile-body-3").innerHTML = "Body";
+    if (isZoomed === false) {
     document.getElementById("MICHIGAN").style = 'fill: #4d79ff;';
+ }
 }
 
 function minnesotaFunction() {
@@ -805,7 +851,9 @@ function minnesotaFunctionMobile() {
     document.getElementById("mobile-body-2").innerHTML = "Body";
     document.getElementById("mobile-heading-3").innerHTML = "Heading";
     document.getElementById("mobile-body-3").innerHTML = "Body";
+    if (isZoomed === false) {
     document.getElementById("MINNESOTA").style = 'fill: #4d79ff;';
+  }
 }
 
 function mississippiFunction() {
@@ -823,7 +871,9 @@ function mississippiFunctionMobile() {
     document.getElementById("mobile-body-2").innerHTML = "Body";
     document.getElementById("mobile-heading-3").innerHTML = "Heading";
     document.getElementById("mobile-body-3").innerHTML = "Body";
+    if (isZoomed === false) {
     document.getElementById("MISSISSIPPI").style = 'fill: #4d79ff;';
+ }
 }
 
 function missouriFunctionMobile() {
@@ -832,7 +882,9 @@ function missouriFunctionMobile() {
   document.getElementById("mobile-body-2").innerHTML = "Body";
   document.getElementById("mobile-heading-3").innerHTML = "Heading";
   document.getElementById("mobile-body-3").innerHTML = "Body";
+  if (isZoomed === false) {
   document.getElementById("MISSOURI").style = 'fill: #4d79ff;';
+  }
 }
 
 function missouriFunction() {
@@ -859,7 +911,9 @@ function montanaFunctionMobile() {
     document.getElementById("mobile-body-2").innerHTML = "Body";
     document.getElementById("mobile-heading-3").innerHTML = "Heading";
     document.getElementById("mobile-body-3").innerHTML = "Body";
+    if (isZoomed === false) {
     document.getElementById("MONTANA").style = 'fill: #4d79ff;';
+  }
 }
 
 function nebraskaFunction() {
@@ -877,7 +931,9 @@ function nebraskaFunctionMobile() {
     document.getElementById("mobile-body-2").innerHTML = "Body";
     document.getElementById("mobile-heading-3").innerHTML = "Heading";
     document.getElementById("mobile-body-3").innerHTML = "Body";
+    if (isZoomed === false) {
     document.getElementById("NEBRASKA").style = 'fill: #4d79ff;';
+  }
 }
 
 function nevadaFunctionMobile() {
@@ -886,7 +942,9 @@ function nevadaFunctionMobile() {
   document.getElementById("mobile-body-2").innerHTML = "Body";
   document.getElementById("mobile-heading-3").innerHTML = "Heading";
   document.getElementById("mobile-body-3").innerHTML = "Body";
+  if (isZoomed === false) {
   document.getElementById("NEVADA").style = 'fill: #4d79ff;';
+  }
 }
 
 function nevadaFunction() {
@@ -904,7 +962,9 @@ function  newhampshireFunctionMobile() {
   document.getElementById("mobile-body-2").innerHTML = "Body";
   document.getElementById("mobile-heading-3").innerHTML = "Heading";
   document.getElementById("mobile-body-3").innerHTML = "Body";
+  if (isZoomed === false) {
   document.getElementById("NEWHAMPSHIRE").style = 'fill: #4d79ff;';
+  }
 }
 
 function  newhampshireFunction() {
@@ -931,7 +991,9 @@ function newjerseyFunctionMobile() {
     document.getElementById("mobile-body-2").innerHTML = "Body";
     document.getElementById("mobile-heading-3").innerHTML = "Heading";
     document.getElementById("mobile-body-3").innerHTML = "Body";
+    if (isZoomed === false) {
     document.getElementById("NEWJERSEY").style = 'fill: #4d79ff;';
+  }
 }
 
 function newmexicoFunction() {
@@ -949,7 +1011,9 @@ function newmexicoFunctionMobile() {
     document.getElementById("mobile-body-2").innerHTML = "Body";
     document.getElementById("mobile-heading-3").innerHTML = "Heading";
     document.getElementById("mobile-body-3").innerHTML = "Body";
+    if (isZoomed === false) {
     document.getElementById("NEWMEXICO").style = 'fill: #4d79ff;';
+  }
 }
 
 function  newyorkFunctionMobile() {
@@ -958,7 +1022,9 @@ function  newyorkFunctionMobile() {
   document.getElementById("mobile-body-2").innerHTML = "Body";
   document.getElementById("mobile-heading-3").innerHTML = "Heading";
   document.getElementById("mobile-body-3").innerHTML = "Body";
+  if (isZoomed === false) {
   document.getElementById("NEWYORK").style = 'fill: #4d79ff;';
+  }
 }
 
 function  newyorkFunction() {
@@ -976,7 +1042,9 @@ function  northcarolinaFunctionMobile() {
   document.getElementById("mobile-body-2").innerHTML = "Body";
   document.getElementById("mobile-heading-3").innerHTML = "Heading";
   document.getElementById("mobile-body-3").innerHTML = "Body";
+  if (isZoomed === false) {
   document.getElementById("NORTHCAROLINA").style = 'fill: #4d79ff;';
+  }
 }
 
 function  northcarolinaFunction() {
@@ -1003,7 +1071,9 @@ function northdakotaFunctionMobile() {
     document.getElementById("mobile-body-2").innerHTML = "Body";
     document.getElementById("mobile-heading-3").innerHTML = "Heading";
     document.getElementById("mobile-body-3").innerHTML = "Body";
+    if (isZoomed === false) {
     document.getElementById("NORTHDAKOTA").style = 'fill: #4d79ff;';
+  }
 }
 
 function  ohioFunctionMobile() {
@@ -1012,7 +1082,9 @@ function  ohioFunctionMobile() {
   document.getElementById("mobile-body-2").innerHTML = "Body";
   document.getElementById("mobile-heading-3").innerHTML = "Heading";
   document.getElementById("mobile-body-3").innerHTML = "Body";
+  if (isZoomed === false) {
   document.getElementById("OHIO").style = 'fill: #4d79ff;';
+  }
 }
 
 function  ohioFunction() {
@@ -1030,7 +1102,9 @@ function oklahomaFunctionMobile() {
   document.getElementById("mobile-body-2").innerHTML = "Body";
   document.getElementById("mobile-heading-3").innerHTML = "Heading";
   document.getElementById("mobile-body-3").innerHTML = "Body";
+  if (isZoomed === false) {
   document.getElementById("OKLAHOMA").style = 'fill: #4d79ff;';
+  }
 }
 
 function  oklahomaFunction() {
@@ -1048,7 +1122,9 @@ function  oregonFunctionMobile() {
   document.getElementById("mobile-body-2").innerHTML = "Body";
   document.getElementById("mobile-heading-3").innerHTML = "Heading";
   document.getElementById("mobile-body-3").innerHTML = "Body";
+  if (isZoomed === false) {
   document.getElementById("OREGON").style = 'fill: #4d79ff;';
+  }
 }
 
 function  oregonFunction() {
@@ -1066,7 +1142,9 @@ function  pennsylvaniaFunctionMobile() {
   document.getElementById("mobile-body-2").innerHTML = "Body";
   document.getElementById("mobile-heading-3").innerHTML = "Heading";
   document.getElementById("mobile-body-3").innerHTML = "Body";
+  if (isZoomed === false) {
   document.getElementById("PENNSYLVANIA").style = 'fill: #4d79ff;';
+  }
 }
 
 function  pennsylvaniaFunction() {
@@ -1093,7 +1171,9 @@ function rhodeislandFunctionMobile() {
     document.getElementById("mobile-body-2").innerHTML = "Body";
     document.getElementById("mobile-heading-3").innerHTML = "Heading";
     document.getElementById("mobile-body-3").innerHTML = "Body";
+    if (isZoomed === false) {
     document.getElementById("RHODEISLAND").style = 'fill: #4d79ff;';
+  }
 }
 
 function  southcarolinaFunctionMobile() {
@@ -1102,7 +1182,9 @@ function  southcarolinaFunctionMobile() {
   document.getElementById("mobile-body-2").innerHTML = "Body";
   document.getElementById("mobile-heading-3").innerHTML = "Heading";
   document.getElementById("mobile-body-3").innerHTML = "Body";
+  if (isZoomed === false) {
   document.getElementById("SOUTHCAROLINA").style = 'fill: #4d79ff;';
+  }
 }
 
 function  southcarolinaFunction() {
@@ -1129,7 +1211,9 @@ function southdakotaFunctionMobile() {
     document.getElementById("mobile-body-2").innerHTML = "Body";
     document.getElementById("mobile-heading-3").innerHTML = "Heading";
     document.getElementById("dem-heading").innerHTML = "Body";
+    if (isZoomed === false) {
     document.getElementById("SOUTHDAKOTA").style = 'fill: #4d79ff;';
+  }
 }
 
 function tennesseeFunction() {
@@ -1147,7 +1231,9 @@ function tennesseeFunctionMobile() {
     document.getElementById("mobile-body-2").innerHTML = "Body";
     document.getElementById("mobile-heading-3").innerHTML = "Heading";
     document.getElementById("mobile-body-3").innerHTML = "Body";
+    if (isZoomed === false) {
     document.getElementById("TENNESSEE").style = 'fill: #4d79ff;';
+  }
 }
 
 function texasFunction() {
@@ -1165,7 +1251,9 @@ function texasFunctionMobile() {
     document.getElementById("mobile-body-2").innerHTML = "Body";
     document.getElementById("mobile-heading-3").innerHTML = "Heading";
     document.getElementById("mobile-body-3").innerHTML = "Body";
+    if (isZoomed === false) {
     document.getElementById("TEXAS").style = 'fill: #4d79ff;';
+  }
 }
 
 function  utahFunctionMobile() {
@@ -1174,7 +1262,9 @@ function  utahFunctionMobile() {
   document.getElementById("mobile-body-2").innerHTML = "Body";
   document.getElementById("mobile-heading-3").innerHTML = "Heading";
   document.getElementById("mobile-body-3").innerHTML = "Body";
+  if (isZoomed === false) {
   document.getElementById("UTAH").style = 'fill: #4d79ff;';
+  }
 }
 
 function  utahFunction() {
@@ -1192,7 +1282,9 @@ function  vermontFunctionMobile() {
   document.getElementById("mobile-body-2").innerHTML = "Body";
   document.getElementById("mobile-heading-3").innerHTML = "Heading";
   document.getElementById("mobile-body-3").innerHTML = "Body";
+  if (isZoomed === false) {
   document.getElementById("VERMONT").style = 'fill: #4d79ff;';
+  }
 }
 
 function  vermontFunction() {
@@ -1219,7 +1311,9 @@ function virginiaFunctionMobile() {
     document.getElementById("mobile-body-2").innerHTML = "Body";
     document.getElementById("mobile-heading-3").innerHTML = "Heading";
     document.getElementById("mobile-body-3").innerHTML = "Body";
+    if (isZoomed === false) {
     document.getElementById("VIRGINIA").style = 'fill: #4d79ff;';
+  }
 }
 
 function  washingtonFunctionMobile() {
@@ -1228,7 +1322,9 @@ function  washingtonFunctionMobile() {
   document.getElementById("mobile-body-2").innerHTML = "Body";
   document.getElementById("mobile-heading-3").innerHTML = "Heading";
   document.getElementById("mobile-body-3").innerHTML = "Body";
+  if (isZoomed === false) {
   document.getElementById("WASHINGTON").style = 'fill: #4d79ff;';
+  }
 }
 
 function  washingtonFunction() {
@@ -1255,7 +1351,9 @@ function westvirginiaFunctionMobile() {
     document.getElementById("mobile-body-2").innerHTML = "Body";
     document.getElementById("mobile-heading-3").innerHTML = "Heading";
     document.getElementById("mobile-body-3").innerHTML = "Body";
+    if (isZoomed === false) {
     document.getElementById("WESTVIRGINIA").style = 'fill: #4d79ff;';
+  }
 }
 
 function wisconsinFunction() {
@@ -1273,7 +1371,9 @@ function wisconsinFunctionMobile() {
     document.getElementById("mobile-body-2").innerHTML = "Body";
     document.getElementById("mobile-heading-3").innerHTML = "Heading";
     document.getElementById("mobile-body-3").innerHTML = "Body";
+    if (isZoomed === false) {
     document.getElementById("WISCONSIN").style = 'fill: #4d79ff;';
+  }
 }
 
 function wyomingFunction() {
@@ -1291,7 +1391,9 @@ function wyomingFunctionMobile() {
     document.getElementById("mobile-body-2").innerHTML = "Body";
     document.getElementById("mobile-heading-3").innerHTML = "Heading";
     document.getElementById("mobile-body-3").innerHTML = "Body";
+    if (isZoomed === false) {
     document.getElementById("WYOMING").style = 'fill: #4d79ff;';
+  }
 }
 
 // Data Bubbles End //

@@ -21,6 +21,18 @@ svg {
   margin: auto;
 }
 
+.refreshDiv{
+  pointer-events: all;
+  opacity: 1;
+  transition: opacity .3s linear;
+  will-change: opacity;
+}
+
+.refreshDiv.hide {
+    opacity:  0;
+    pointer-events: none;
+}
+
 .refreshButton {
   margin-top: 623px;
 }
