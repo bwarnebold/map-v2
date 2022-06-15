@@ -30,6 +30,7 @@ var centerX = parseFloat(viewbox[2]) / 2;
 var centerY = parseFloat(viewbox[3]) / 2;
 var matrixGroup = svg.getElementById("matrix-group");
 var isZoomed = false;
+var isPanned = false;
 
 function zoom(scale) {
   if (isZoomed === false) {
@@ -46,13 +47,13 @@ function zoom(scale) {
 }
 
 function pan(dx, dy) {
-  if (isZoomed === false) {
+  if (isPanned === false) {
     transformMatrix[4] += dx;
     transformMatrix[5] += dy;
               
     var newMatrix = "matrix(" +  transformMatrix.join(' ') + ")";
     matrixGroup.setAttributeNS(null, "transform", newMatrix);
-    isZoomed = true;
+    isPanned = true;
   }
 }
 
