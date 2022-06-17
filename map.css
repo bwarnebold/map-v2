@@ -34,7 +34,7 @@ svg {
 }
 
 .refreshButton {
-  margin-top: 623px;
+  margin-top: 600px;
 }
 
 .button {
@@ -47,7 +47,7 @@ svg {
   font-weight: 700;
   letter-spacing: 1.75px;
   border: none;
-  margin-top:  15px;
+  margin-top: 5px;
 }
 
 .button:hover {
