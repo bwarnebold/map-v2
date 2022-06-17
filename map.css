@@ -47,12 +47,14 @@ svg {
   font-weight: 700;
   letter-spacing: 1.75px;
   border: none;
+  margin-top:  15px;
 }
 
 .button:hover {
   color: #d84541;
   background-color: white;
   border: 2px solid #d84541;
+  cursor:  pointer;
 }
 
 .refreshDiv {
